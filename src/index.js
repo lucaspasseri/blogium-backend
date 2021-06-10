@@ -19,6 +19,13 @@ app.get("/", (req, res) => {
     res.send(postsList);
 });
 
-app.listen(4001);
+app.post("/", (req, res) => {
+  req.body.id = postsList.length + 1;
+  postsList.push(req.body);
+  res.send("OK");
+});
 
-console.log("Rodando na porta 4001...");
+app.listen(4001, ()=> {
+  console.log("Rodando na porta 4001...");
+});
+
